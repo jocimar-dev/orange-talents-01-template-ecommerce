@@ -16,6 +16,7 @@ public class NewUserRequest {
 
     public NewUserRequest(@Email @NotBlank String email,
                           @NotBlank @Length(min = 6) String password) {
+        super();
         this.email = email;
         this.password = password;
     }
