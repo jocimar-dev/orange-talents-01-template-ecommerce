@@ -28,8 +28,8 @@ public class UserController {
     @PostMapping("/usuarios")
     @Transactional
     public String cria(@RequestBody @Valid NewUserRequest request) {
-        User newUser = request.toUser();
-        manager.persist(newUser);
-        return newUser.toString();
+        Users newUsers = request.toUser();
+        manager.persist(newUsers);
+        return newUsers.toString();
     }
 }

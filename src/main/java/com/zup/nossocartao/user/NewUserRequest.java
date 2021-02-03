@@ -25,7 +25,7 @@ public class NewUserRequest {
         return email;
     }
 
-    public User toUser() {
-        return new User(email, new CleanPassword(password));
+    public Users toUser() {
+        return new Users(email, new CleanPassword(password));
     }
 }
