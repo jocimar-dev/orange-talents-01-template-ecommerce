@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 
 @Entity
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,12 +34,12 @@ public class User {
     private LocalDateTime creationTime;
 
     @Deprecated
-    public User() {
+    public Users() {
 
     }
 
-    public User(@NotBlank @Email String email,
-                @NotBlank @Length(min = 6) CleanPassword cleanPassword) {
+    public Users(@NotBlank @Email String email,
+                 @NotBlank @Length(min = 6) CleanPassword cleanPassword) {
         Assert.isTrue(StringUtils.hasLength(email),"Não pode ser cadastrado email em branco");
         Assert.notNull(cleanPassword,"Não pode ser cadatrado senha em branco");
         this.email = email;
@@ -50,12 +50,12 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User user = (User) o;
-        return getId().equals(user.getId()) &&
-                email.equals(user.email) &&
-                password.equals(user.password) &&
-                creationTime.equals(user.creationTime);
+        if (!(o instanceof Users)) return false;
+        Users users = (Users) o;
+        return getId().equals(users.getId()) &&
+                email.equals(users.email) &&
+                password.equals(users.password) &&
+                creationTime.equals(users.creationTime);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class User {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+        return new StringJoiner(", ", Users.class.getSimpleName() + "[", "]")
                 .add("id=" + id)
                 .add("email='" + email + "'")
                 .add("password='" + password + "'")

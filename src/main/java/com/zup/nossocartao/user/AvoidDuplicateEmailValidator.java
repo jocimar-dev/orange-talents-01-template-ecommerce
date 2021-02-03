@@ -11,7 +11,8 @@ import java.util.Optional;
 public class AvoidDuplicateEmailValidator implements Validator {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository manager;
+
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -25,7 +26,7 @@ public class AvoidDuplicateEmailValidator implements Validator {
         }
 
         NewUserRequest request = (NewUserRequest) target;
-        Optional<User> insertionAttempt = userRepository.findByEmail(request.getEmail());
+        Optional<Users> insertionAttempt = manager.findByEmail(request.getEmail());
         if(insertionAttempt.isPresent()) {
             errors.rejectValue("email",null, "Email já encontra-se cadastrado no sistema");
         }
